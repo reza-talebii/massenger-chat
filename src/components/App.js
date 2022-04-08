@@ -11,12 +11,9 @@ function App() {
   return (
     <div style={{ fontFamily: "Avenir" }}>
       <Router>
-        {/* <AuthProvider> */}
         <Routes>
-          <Route path="/" element={Login} />
-          {/* <Route path="/chats" component={Chats} /> */}
+          <Route path="/" element={<Login />} />
         </Routes>
-        {/* </AuthProvider> */}
       </Router>
     </div>
   );
