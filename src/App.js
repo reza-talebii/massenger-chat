@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // import { AuthProvider } from "../contexts/AuthContext"
 
-// import Chats from "./Chats"
+import Chats from "./components/Chats";
 import Login from "./components/Login";
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/chat" element={<Chats />} />
         </Routes>
       </Router>
     </div>
