@@ -99,3 +99,10 @@
   left: calc(50vw - 33px);
   top: calc(50vh - 22px);
 }
+
+.alert {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

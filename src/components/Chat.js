@@ -4,12 +4,14 @@ import { ChatEngine } from "react-chat-engine";
 import { auth } from "firebase";
 import { useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../context/AuthContext";
+import Alert from "./Alert";
 
 const Chat = () => {
   const { user } = useContext(useAuth);
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const handelLogout = async () => {
     await auth().signOut();
@@ -56,13 +58,14 @@ const Chat = () => {
               },
             })
             .then(() => setLoading(false))
-            .catch((e) => console.log("e", e.response));
+            .catch((e) => setError(e.response));
         });
       });
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   }, [user, location.pathname]);
 
-  if (loading || !user) return <div>Loading...</div>;
+  if (loading || error || !user)
+    return <Alert message={!error && "Loading..."} />;
 
   return (
     <div className="chats-page">
