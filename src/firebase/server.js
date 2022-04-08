@@ -6,7 +6,7 @@ import "firebase/auth";
 export const auth = firebase
   .initializeApp({
     apiKey: "AIzaSyBiagAumFD1KGBVGd5YFBw__l5RLgSTxi8",
-    authDomain: "chat-messenger-b12eb.firebaseapp.com",
+    authDomain: "https://unichat-1.netlify.app",
     projectId: "chat-messenger-b12eb",
     storageBucket: "chat-messenger-b12eb.appspot.com",
     messagingSenderId: "395733853669",
