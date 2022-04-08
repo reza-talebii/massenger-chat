@@ -9,8 +9,7 @@ const AuthProvider = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -20,10 +19,8 @@ const AuthProvider = ({ children }) => {
     });
   }, [user, location.pathname]);
 
-  const value = { user, error, loading };
-
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={{ user }}>
       {!loading && children}
     </AuthContext.Provider>
   );
