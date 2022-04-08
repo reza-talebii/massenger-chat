@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { auth } from "../firebase/server";
 
-import { AuthContext } from "./AuthProvider";
+import AuthContext from "./AuthContext";
 
 const AuthProvider = ({ children }) => {
   const location = useLocation();
@@ -14,17 +14,15 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-        navigate("/chat");
-      } else {
-        setUser(null);
-      }
+      setUser(user);
+      user ? navigate("/chat") : setUser(null);
       setLoading(false);
     });
-  }, [user, location]);
+  }, [user, location.pathname]);
 
   const value = { user, error, loading };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
+
+export default AuthProvider;
