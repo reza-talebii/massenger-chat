@@ -22,7 +22,11 @@ const AuthProvider = ({ children }) => {
 
   const value = { user, error, loading };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
